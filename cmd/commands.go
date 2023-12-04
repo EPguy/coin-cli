@@ -32,7 +32,9 @@ var List = &cobra.Command{
 			fmt.Printf("coin id : %s\n", *coin.ID)
 			fmt.Printf("coin name : %s\n", *coin.Name)
 			fmt.Printf("coin symbol : %s\n", *coin.Symbol)
-			fmt.Printf("coin price(USD) : %f", *ticker.Quotes["USD"].Price)
+			fmt.Printf("coin price(USD) : %f\n", *ticker.Quotes["USD"].Price)
+			fmt.Printf("coin max supply : %d\n", *ticker.MaxSupply)
+			fmt.Printf("coin total supply : %d", *ticker.TotalSupply)
 		}
 	},
 }
