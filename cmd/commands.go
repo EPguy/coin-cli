@@ -11,7 +11,7 @@ import (
 var Price = &cobra.Command{
 	Use:   "price",
 	Short: "Search for the coin price",
-	Long:  `coin price <COIN_SYMBOL>`,
+	Long:  `coin-cli price <COIN_SYMBOL>`,
 	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		searchVal := strings.Join(args, " ")
@@ -23,7 +23,7 @@ var Price = &cobra.Command{
 var List = &cobra.Command{
 	Use:   "list",
 	Short: "List coins",
-	Long:  `coin list`,
+	Long:  `coin-cli list`,
 	Args:  cobra.MinimumNArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
 		coins := gh.SearchCoinList()
