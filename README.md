@@ -37,7 +37,7 @@
 ```go build .```
 
 # Info Example
-![image](https://github.com/EPguy/coin-cli/assets/36794920/1041dd2c-15a8-4548-b1ef-7656b3444c30)
+![image](https://github.com/EPguy/coin-cli/assets/36794920/f44598ea-76e2-4aa3-8b83-360631b34e5e)
 
 # Used API
 [coinpaprika](https://api.coinpaprika.com/)
