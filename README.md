@@ -1,11 +1,11 @@
-# ₿ coin-cli - Cryptocurrency  info in terminal
 > BTC will touch 500,000$ 🚀
-
+# ₿ coin-cli - Cryptocurrency  info in terminal
 # Usage 🧩
 ```coin-cli list <MAX_RANK_TO_SHOW> --sort <SORT_TYPE>```<br>
 ```coin-cli info <COIN_SYMBOL>```<br>
 
 # Example of Usage
+```coin-cli list```<br>
 ```coin-cli list 100```<br>
 ```coin-cli list 100 --sort price_desc```<br>
 ```coin-cli list 100 --sort 24d_desc```<br>
