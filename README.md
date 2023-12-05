@@ -19,6 +19,8 @@
 ```rank_desc```<br>
 ```price_asc```<br>
 ```price_desc```<br>
+```1h_asc```<br>
+```1h_desc```<br>
 ```24h_asc```<br>
 ```24h_desc```<br>
 ```7d_asc```<br>
@@ -33,7 +35,7 @@
 ```go build .```
 
 # Info Example
-![image](https://github.com/EPguy/coin-cli/assets/36794920/7b986a22-6196-4960-b161-d29fb6a3cac0)
+![image](https://github.com/EPguy/coin-cli/assets/36794920/7023c13c-2097-4309-b87b-dd8a7c89e954)
 
 # Used API
 [coinpaprika](https://api.coinpaprika.com/)
