@@ -29,7 +29,7 @@ var Info = &cobra.Command{
 
 var List = &cobra.Command{
 	Use:   "list",
-	Short: "List coins Top 500",
+	Short: "Show List coins",
 	Long:  `coin-cli list <MAX_RANK_TO_SHOW>`,
 	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
