@@ -14,7 +14,7 @@ import (
 	"golang.org/x/text/message"
 )
 
-var Price = &cobra.Command{
+var Info = &cobra.Command{
 	Use:   "info",
 	Short: "Search for the coin info",
 	Long:  `coin-cli info <COIN_SYMBOL>`,
@@ -50,7 +50,7 @@ var List = &cobra.Command{
 }
 
 func AddCommands() {
-	RootCmd.AddCommand(Price, List)
+	RootCmd.AddCommand(Info, List)
 }
 
 func displayTickerInfo(ticker *coinpaprika.Ticker) {
