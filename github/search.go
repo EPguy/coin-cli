@@ -33,7 +33,7 @@ func SearchTicker(symbol string) *coinpaprika.Ticker {
 			break
 		}
 	}
-	if ticker.ID == nil {
+	if ticker == nil {
 		log.Fatalf("Coin is not found with the provided symbol.")
 	}
 	return ticker
