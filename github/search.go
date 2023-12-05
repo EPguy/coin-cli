@@ -18,6 +18,12 @@ func SearchCoinList() []coinpaprika.Coin {
 	return coin
 }
 
+func SearchTickerList() []*coinpaprika.Ticker {
+	tickers := GetTickerList()
+
+	return tickers
+}
+
 func SearchTicker(symbol string) *coinpaprika.Ticker {
 	paprikaClient := GetPaprikaClient()
 	coins := GetCoinList()

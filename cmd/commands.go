@@ -26,15 +26,16 @@ var List = &cobra.Command{
 	Long:  `coin-cli list`,
 	Args:  cobra.MinimumNArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
-		coins := gh.SearchCoinList()
-		for _, coin := range coins {
-			ticker := gh.SearchTicker(*coin.Symbol)
-			fmt.Printf("coin id : %s\n", *coin.ID)
-			fmt.Printf("coin name : %s\n", *coin.Name)
-			fmt.Printf("coin symbol : %s\n", *coin.Symbol)
+		tickers := gh.SearchTickerList()
+		for _, ticker := range tickers {
+			fmt.Printf("coin id : %s\n", *ticker.ID)
+			fmt.Printf("coin name : %s\n", *ticker.Name)
+			fmt.Printf("coin symbol : %s\n", *ticker.Symbol)
 			fmt.Printf("coin price(USD) : %f\n", *ticker.Quotes["USD"].Price)
 			fmt.Printf("coin max supply : %d\n", *ticker.MaxSupply)
-			fmt.Printf("coin total supply : %d", *ticker.TotalSupply)
+			fmt.Printf("coin total supply : %d\n", *ticker.TotalSupply)
+
+			fmt.Printf("-----------------------------------------------------\n")
 		}
 	},
 }
