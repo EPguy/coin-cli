@@ -2,7 +2,9 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"math"
+	"strconv"
 	"strings"
 
 	gh "github.com/EPguy/coin-cli/github"
@@ -27,12 +29,20 @@ var Price = &cobra.Command{
 
 var List = &cobra.Command{
 	Use:   "list",
-	Short: "List coins Top 100",
-	Long:  `coin-cli list`,
-	Args:  cobra.MinimumNArgs(0),
+	Short: "List coins Top 500",
+	Long:  `coin-cli list <MAX_RANK_TO_SHOW>`,
+	Args:  cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		tickers := gh.SearchTickerList()[:100]
-		for _, ticker := range tickers {
+		searchVal := strings.Join(args, " ")
+		limit, err := strconv.Atoi(searchVal)
+		if err != nil {
+			log.Fatalf("Please input a number instead of text.")
+		}
+		tickers := gh.SearchTickerList()
+		if limit > len(tickers) {
+			limit = len(tickers)
+		}
+		for _, ticker := range tickers[:limit] {
 			displayTickerInfo(ticker)
 			fmt.Printf("-----------------------------------------------------\n")
 		}
