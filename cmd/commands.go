@@ -113,6 +113,14 @@ func sortTickerList(tickers []*coinpaprika.Ticker) {
 		sort.Slice(tickers, func(i, j int) bool {
 			return *tickers[i].Quotes["USD"].PercentChange30d > *tickers[j].Quotes["USD"].PercentChange30d
 		})
+	case "1y_asc":
+		sort.Slice(tickers, func(i, j int) bool {
+			return *tickers[i].Quotes["USD"].PercentChange1y < *tickers[j].Quotes["USD"].PercentChange1y
+		})
+	case "1y_desc":
+		sort.Slice(tickers, func(i, j int) bool {
+			return *tickers[i].Quotes["USD"].PercentChange1y > *tickers[j].Quotes["USD"].PercentChange1y
+		})
 	}
 
 }
@@ -133,4 +141,5 @@ func displayTickerInfo(ticker *coinpaprika.Ticker) {
 	p.Printf("percent change(24h) : %.2f%%\n", *ticker.Quotes["USD"].PercentChange24h)
 	p.Printf("percent change(7d) : %.2f%%\n", *ticker.Quotes["USD"].PercentChange7d)
 	p.Printf("percent change(30d) : %.2f%%\n", *ticker.Quotes["USD"].PercentChange30d)
+	p.Printf("percent change(1y) : %.2f%%\n", *ticker.Quotes["USD"].PercentChange1y)
 }
