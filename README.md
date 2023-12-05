@@ -1,4 +1,5 @@
 # ₿ coin-cli - Cryptocurrency  info in terminal
+> BTC will touch 500,000$ 🚀
 
 # Usage 🧩
 ```coin-cli list <MAX_RANK_TO_SHOW>```<br>
@@ -18,4 +19,5 @@
 # Info Example
 ![image](https://github.com/EPguy/coin-cli/assets/36794920/7b986a22-6196-4960-b161-d29fb6a3cac0)
 
-> BTC will touch 500,000$ 🚀
+# Used API
+[coinpaprika](https://api.coinpaprika.com/)
