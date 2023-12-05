@@ -2,7 +2,9 @@
 
 # Usage 🧩
 ```coin-cli list```<br>
-```coin-cli info <COIN_SYMBOL>```
+```coin-cli info <COIN_SYMBOL>```<br>
+```coin-cli info ETH```<br>
+```coin-cli info BTC```
 
 # Quick Start 🚀
 ```git clone https://github.com/EPguy/coin-cli.git``` <br>
