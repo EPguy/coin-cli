@@ -1,6 +1,6 @@
 # Usage 🧩
 ```coin-cli list```<br>
-```coin-cli price <COIN_SYMBOL>```
+```coin-cli info <COIN_SYMBOL>```
 
 # Quick Start 🚀
 ```git clone https://github.com/EPguy/coin-cli.git``` <br>
