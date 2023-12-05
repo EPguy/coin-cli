@@ -132,8 +132,6 @@ func displayTickerInfo(ticker *coinpaprika.Ticker) {
 	p.Printf("name : %s\n", *ticker.Name)
 	p.Printf("symbol : %s\n", *ticker.Symbol)
 	p.Printf("price : %f$\n", *ticker.Quotes["USD"].Price)
-	p.Printf("all time high price(ATH) : %f$\n", *ticker.Quotes["USD"].ATHPrice)
-	p.Printf("all time high date(ATH) : %s$\n", *ticker.Quotes["USD"].ATHDate)
 	p.Printf("max supply : %d\n", *ticker.MaxSupply)
 	p.Printf("total supply : %d\n", *ticker.TotalSupply)
 	p.Printf("market cap : %.0f$\n", math.Floor(*ticker.Quotes["USD"].MarketCap))
@@ -142,4 +140,6 @@ func displayTickerInfo(ticker *coinpaprika.Ticker) {
 	p.Printf("percent change(7d) : %.2f%%\n", *ticker.Quotes["USD"].PercentChange7d)
 	p.Printf("percent change(30d) : %.2f%%\n", *ticker.Quotes["USD"].PercentChange30d)
 	p.Printf("percent change(1y) : %.2f%%\n", *ticker.Quotes["USD"].PercentChange1y)
+	p.Printf("all time high(price) : %f$\n", *ticker.Quotes["USD"].ATHPrice)
+	p.Printf("all time high(date) : %s$\n", *ticker.Quotes["USD"].ATHDate)
 }
