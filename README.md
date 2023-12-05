@@ -27,6 +27,8 @@
 ```7d_desc```<br>
 ```30d_asc```<br>
 ```30d_desc```<br>
+```1y_asc```<br>
+```1y_desc```<br>
 
 # Quick Start 🚀
 ```git clone https://github.com/EPguy/coin-cli.git``` <br>
@@ -35,7 +37,7 @@
 ```go build .```
 
 # Info Example
-![image](https://github.com/EPguy/coin-cli/assets/36794920/7023c13c-2097-4309-b87b-dd8a7c89e954)
+![image](https://github.com/EPguy/coin-cli/assets/36794920/1041dd2c-15a8-4548-b1ef-7656b3444c30)
 
 # Used API
 [coinpaprika](https://api.coinpaprika.com/)
