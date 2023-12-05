@@ -6,6 +6,7 @@
 ```coin-cli info <COIN_SYMBOL>```<br>
 
 # Example of Usage
+```coin-cli list```<br>
 ```coin-cli list 100```<br>
 ```coin-cli list 100 --sort price_desc```<br>
 ```coin-cli list 100 --sort 24d_desc```<br>
