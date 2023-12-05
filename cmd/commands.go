@@ -60,6 +60,7 @@ func displayTickerInfo(ticker *coinpaprika.Ticker) {
 	p.Printf("name : %s\n", *ticker.Name)
 	p.Printf("symbol : %s\n", *ticker.Symbol)
 	p.Printf("price : %f$\n", *ticker.Quotes["USD"].Price)
+	p.Printf("all time high(ATH) : %f$\n", *ticker.Quotes["USD"].ATHPrice)
 	p.Printf("max supply : %d\n", *ticker.MaxSupply)
 	p.Printf("total supply : %d\n", *ticker.TotalSupply)
 	p.Printf("market cap : %.0f$\n", math.Floor(*ticker.Quotes["USD"].MarketCap))
