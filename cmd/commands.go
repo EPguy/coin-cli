@@ -63,7 +63,7 @@ var List = &cobra.Command{
 }
 
 func AddCommands() {
-	RootCmd.PersistentFlags().StringVarP(&SortType, "sort", "s", "rank_asc", "Sort type for list\n(rank_asc, rank_desc, price_asc, price_desc, 24h_asc, 24h_desc, 7d_asc, 7d_desc, 30d_asc, 30d_desc)")
+	RootCmd.PersistentFlags().StringVarP(&SortType, "sort", "s", "rank_asc", "Sort type for list\n(rank_asc, rank_desc, price_asc, price_desc, 1h_asc, 1h_desc, 24h_asc, 24h_desc, 7d_asc, 7d_desc, 30d_asc, 30d_desc)")
 	RootCmd.AddCommand(Info, List)
 }
 
@@ -80,6 +80,14 @@ func sortTickerList(tickers []*coinpaprika.Ticker) {
 	case "price_desc":
 		sort.Slice(tickers, func(i, j int) bool {
 			return *tickers[i].Quotes["USD"].Price > *tickers[j].Quotes["USD"].Price
+		})
+	case "1h_asc":
+		sort.Slice(tickers, func(i, j int) bool {
+			return *tickers[i].Quotes["USD"].PercentChange1h < *tickers[j].Quotes["USD"].PercentChange1h
+		})
+	case "1h_desc":
+		sort.Slice(tickers, func(i, j int) bool {
+			return *tickers[i].Quotes["USD"].PercentChange1h > *tickers[j].Quotes["USD"].PercentChange1h
 		})
 	case "24h_asc":
 		sort.Slice(tickers, func(i, j int) bool {
@@ -121,6 +129,7 @@ func displayTickerInfo(ticker *coinpaprika.Ticker) {
 	p.Printf("max supply : %d\n", *ticker.MaxSupply)
 	p.Printf("total supply : %d\n", *ticker.TotalSupply)
 	p.Printf("market cap : %.0f$\n", math.Floor(*ticker.Quotes["USD"].MarketCap))
+	p.Printf("percent change(1h) : %.2f%%\n", *ticker.Quotes["USD"].PercentChange1h)
 	p.Printf("percent change(24h) : %.2f%%\n", *ticker.Quotes["USD"].PercentChange24h)
 	p.Printf("percent change(7d) : %.2f%%\n", *ticker.Quotes["USD"].PercentChange7d)
 	p.Printf("percent change(30d) : %.2f%%\n", *ticker.Quotes["USD"].PercentChange30d)
