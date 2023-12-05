@@ -25,21 +25,16 @@ func SearchTickerList() []*coinpaprika.Ticker {
 }
 
 func SearchTicker(symbol string) *coinpaprika.Ticker {
-	paprikaClient := GetPaprikaClient()
-	coins := GetCoinList()
-	var coin coinpaprika.Coin
-	for _, v := range coins {
+	tickers := GetTickerList()
+	var ticker *coinpaprika.Ticker
+	for _, v := range tickers {
 		if *v.Symbol == symbol && *v.Rank > 0 {
-			coin = *v
+			ticker = v
 			break
 		}
 	}
-	if coin.ID == nil {
+	if ticker.ID == nil {
 		log.Fatalf("Coin is not found with the provided symbol.")
-	}
-	ticker, err := paprikaClient.Tickers.GetByID(*coin.ID, nil)
-	if err != nil {
-		log.Fatalf("Error while searching ticker for: %v: %v", symbol, err)
 	}
 	return ticker
 }
