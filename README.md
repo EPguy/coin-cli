@@ -1,4 +1,4 @@
-# ₿ coin-cli - Coin info in terminal
+# ₿ coin-cli - Cryptocurrency  info in terminal
 
 # Usage 🧩
 ```coin-cli list <MAX_RANK_TO_SHOW>```<br>
