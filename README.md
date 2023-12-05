@@ -1,3 +1,5 @@
+# ₿ coin-cli - Coin info in terminal
+
 # Usage 🧩
 ```coin-cli list```<br>
 ```coin-cli info <COIN_SYMBOL>```
