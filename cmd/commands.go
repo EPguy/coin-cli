@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"math"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -13,6 +14,8 @@ import (
 	"golang.org/x/text/language"
 	"golang.org/x/text/message"
 )
+
+var SortType string
 
 var Info = &cobra.Command{
 	Use:   "info",
@@ -31,26 +34,79 @@ var List = &cobra.Command{
 	Use:   "list",
 	Short: "Show List coins",
 	Long:  `coin-cli list <MAX_RANK_TO_SHOW>`,
-	Args:  cobra.MinimumNArgs(1),
+	Args:  cobra.MinimumNArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
 		searchVal := strings.Join(args, " ")
-		limit, err := strconv.Atoi(searchVal)
-		if err != nil {
-			log.Fatalf("Please input a number instead of text.")
+		maxRankToShow := 2000
+		if searchVal != "" {
+			var err error
+			maxRankToShow, err = strconv.Atoi(searchVal)
+			if err != nil {
+				log.Fatalf("Please input a number instead of text.")
+			}
 		}
+
 		tickers := gh.SearchTickerList()
-		if limit > len(tickers) {
-			limit = len(tickers)
+		sortTickerList(tickers)
+
+		if maxRankToShow > len(tickers) {
+			maxRankToShow = len(tickers)
 		}
-		for _, ticker := range tickers[:limit] {
+
+		for _, ticker := range tickers[:maxRankToShow] {
 			displayTickerInfo(ticker)
 			fmt.Printf("-----------------------------------------------------\n")
 		}
+
+		fmt.Printf("&&&&&&&&&&&&&&&&&&&&& LIST END &&&&&&&&&&&&&&&&&&&&&\n\n")
 	},
 }
 
 func AddCommands() {
+	RootCmd.PersistentFlags().StringVarP(&SortType, "sort", "s", "rank_asc", "Sort type for list\n(rank_asc, rank_desc, price_asc, price_desc, 24h_asc, 24h_desc, 7d_asc, 7d_desc, 30d_asc, 30d_desc)")
 	RootCmd.AddCommand(Info, List)
+}
+
+func sortTickerList(tickers []*coinpaprika.Ticker) {
+	switch SortType {
+	case "rank_desc":
+		sort.Slice(tickers, func(i, j int) bool {
+			return *tickers[i].Rank > *tickers[j].Rank
+		})
+	case "price_asc":
+		sort.Slice(tickers, func(i, j int) bool {
+			return *tickers[i].Quotes["USD"].Price < *tickers[j].Quotes["USD"].Price
+		})
+	case "price_desc":
+		sort.Slice(tickers, func(i, j int) bool {
+			return *tickers[i].Quotes["USD"].Price > *tickers[j].Quotes["USD"].Price
+		})
+	case "24h_asc":
+		sort.Slice(tickers, func(i, j int) bool {
+			return *tickers[i].Quotes["USD"].PercentChange24h < *tickers[j].Quotes["USD"].PercentChange24h
+		})
+	case "24h_desc":
+		sort.Slice(tickers, func(i, j int) bool {
+			return *tickers[i].Quotes["USD"].PercentChange24h > *tickers[j].Quotes["USD"].PercentChange24h
+		})
+	case "7d_asc":
+		sort.Slice(tickers, func(i, j int) bool {
+			return *tickers[i].Quotes["USD"].PercentChange7d < *tickers[j].Quotes["USD"].PercentChange7d
+		})
+	case "7d_desc":
+		sort.Slice(tickers, func(i, j int) bool {
+			return *tickers[i].Quotes["USD"].PercentChange7d > *tickers[j].Quotes["USD"].PercentChange7d
+		})
+	case "30d_asc":
+		sort.Slice(tickers, func(i, j int) bool {
+			return *tickers[i].Quotes["USD"].PercentChange30d < *tickers[j].Quotes["USD"].PercentChange30d
+		})
+	case "30d_desc":
+		sort.Slice(tickers, func(i, j int) bool {
+			return *tickers[i].Quotes["USD"].PercentChange30d > *tickers[j].Quotes["USD"].PercentChange30d
+		})
+	}
+
 }
 
 func displayTickerInfo(ticker *coinpaprika.Ticker) {
