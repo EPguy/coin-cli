@@ -1,5 +1,11 @@
 > BTC will touch 500,000$ 🚀
 # ₿ coin-cli - Cryptocurrency  info in terminal
+# Quick Start 🚀
+```git clone https://github.com/EPguy/coin-cli.git``` <br>
+```cd coin-cli```<br>
+```go get -d .```<br>
+```go build .```
+
 # Usage 🧩
 ```coin-cli list <MAX_RANK_TO_SHOW> --sort <SORT_TYPE>```<br>
 ```coin-cli info <COIN_SYMBOL>```<br>
@@ -29,12 +35,6 @@
 ```30d_desc```<br>
 ```1y_asc```<br>
 ```1y_desc```<br>
-
-# Quick Start 🚀
-```git clone https://github.com/EPguy/coin-cli.git``` <br>
-```cd coin-cli```<br>
-```go get -d .```<br>
-```go build .```
 
 # Info Example
 ![image](https://github.com/EPguy/coin-cli/assets/36794920/f44598ea-76e2-4aa3-8b83-360631b34e5e)
