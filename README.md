@@ -17,8 +17,10 @@
 ```coin-cli list 100 --sort 24d_desc```<br>
 ```coin-cli info ETH```<br>
 ```coin-cli info BTC```<br>
-```coin-cli info LUNC```<br>
-```coin-cli info EGLD```
+```coin-cli info ASTR```<br>
+```coin-cli info EGLD```<br>
+```coin-cli info SUI```<br>
+```coin-cli info APT```<br>
 
 # Sort Type
 ```rank_asc```<br>
